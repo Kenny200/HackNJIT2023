@@ -1,6 +1,7 @@
 package Akinator;
 import java.util.*;
 import java.io.*;
+import psxbox.PSXBOX;
 /*
 Project: Questionnaire：
 What devices mobile users prefer to play games on, and collect and calculate the average playing time,
