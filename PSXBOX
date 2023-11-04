@@ -1,0 +1,94 @@
+package psxbox;
+
+import java.util.Scanner;
+
+public class PSXBOX {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Step 1: Collect basic information
+        System.out.println("Please provide some basic information:");
+
+        System.out.println("What is your favorite game?");
+        String favoriteGame = getFavoriteGame(sc);
+
+        // Section based on the favorite game chosen
+        switch (favoriteGame) {
+            case "Call of Duty: Modern Warfare II":
+                System.out.println("\nQuestions about Call of Duty: Modern Warfare II:");
+                System.out.println("1. What is your average playing time (e.g., '2 hours', '3-4 hours', 'all day')?");
+                String playingTimeCoD = sc.nextLine();
+
+
+                PlayerPreferences playerPreferencesCoD = new PlayerPreferences();
+                playerPreferencesCoD.setPlayingTime(playingTimeCoD);
+                playerPreferencesCoD.setFavoriteGame(favoriteGame);
+
+                break;
+            case "Mortal Kombat 1":
+                System.out.println("\nQuestions about Mortal Kombat 1:");
+                System.out.println("1. What is your average playing time (e.g., '2 hours', '3-4 hours', 'all day')?");
+                String playingTimeMortalKombat = sc.nextLine();
+
+
+                PlayerPreferences playerPreferencesMortalKombat = new PlayerPreferences();
+                playerPreferencesMortalKombat.setPlayingTime(playingTimeMortalKombat);
+                playerPreferencesMortalKombat.setFavoriteGame(favoriteGame);
+
+                break;
+            case "EA Sports FC 24":
+                System.out.println("\nQuestions about EA Sports FC 24:");
+                System.out.println("1. What is your average playing time (e.g., '2 hours', '3-4 hours', 'all day')?");
+                String playingTimeEASports = sc.nextLine();
+
+
+                PlayerPreferences playerPreferencesEASports = new PlayerPreferences();
+                playerPreferencesEASports.setPlayingTime(playingTimeEASports);
+                playerPreferencesEASports.setFavoriteGame(favoriteGame);
+
+                break;
+        }
+    }
+
+    public static String getFavoriteGame(Scanner sc) {
+        System.out.println("3. What is your favorite game?");
+        System.out.println("   a) Call of Duty: Modern Warfare II");
+        System.out.println("   b) Mortal Kombat 1");
+        System.out.println("   c) EA Sports FC 24");
+
+        String choice = sc.nextLine();
+
+        switch (choice) {
+            case "a":
+                return "Call of Duty: Modern Warfare II";
+            case "b":
+                return "Mortal Kombat 1";
+            case "c":
+                return "EA Sports FC 24";
+            default:
+                System.out.println("Invalid choice. Please select a valid option.");
+                return getFavoriteGame(sc);
+        }
+    }
+
+    static class PlayerPreferences {
+        private String playingTime;
+        private String favoriteGame;
+
+        public void setPlayingTime(String playingTime) {
+            this.playingTime = playingTime;
+        }
+
+        public String getPlayingTime() {
+            return playingTime;
+        }
+
+        public void setFavoriteGame(String favoriteGame) {
+            this.favoriteGame = favoriteGame;
+        }
+
+        public String getFavoriteGame() {
+            return favoriteGame;
+        }
+    }
+}
