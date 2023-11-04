@@ -18,20 +18,17 @@ public class PSXBOX {
         playingTime = sc.nextLine();
         
 
-        switch (favoriteGame) {
-            case "Call of Duty: Modern Warfare II":
-            	System.out.println("What is your favorite gamemode?");
-            	String favoriteGamemodeCOD = sc.nextLine();
-            	break;
-            case "Mortal Kombat 1":
-            	System.out.println("Who do you main?");
-            	String MKmainfighter = sc.nextLine();
-            	break;
-            case "EA Sports FC 24":
-            	System.out.println("Who is your favorite team?");
-            	String EAfavoriteteam = sc.nextLine();
-            	break;
+        if (favoriteGame.equals("Call of Duty: Modern Warfare II")) {
+            System.out.println("What is your favorite gamemode?");
+            String favoriteGamemodeCOD = sc.nextLine();
+        } else if (favoriteGame.equals("Mortal Kombat 1")) {
+            System.out.println("Who do you main?");
+            String MKmainfighter = sc.nextLine();
+        } else if (favoriteGame.equals("EA Sports FC 24")) {
+            System.out.println("Who is your favorite team?");
+            String EAfavoriteteam = sc.nextLine();
         }
+
         
         PlayerPreferences playerPreferences = new PlayerPreferences();
         playerPreferences.setFavoriteGame(favoriteGame);
@@ -42,39 +39,33 @@ public class PSXBOX {
         generateReport(playerPreferences);
     }
     
-    public static void generateReport(PlayerPreferences preferences) {
+	public static void generateReport(PlayerPreferences preferences) {
+	    int totalHours = calculateTotalHours(preferences.getPlayingTime());
 
-        int totalHours = calculateTotalHours(preferences.getPlayingTime());
+	    if (totalHours >= 10) {
+	        System.out.println("Consider limiting your game time. Playing for extended periods may not be healthy.");
+	    }
 
-        if (totalHours >= 10) {
-            System.out.println("Consider limiting your game time. Playing for extended periods may not be healthy.");
-        }
+	    String favoriteGame = preferences.getFavoriteGame();
 
-        switch (preferences.getFavoriteGame()) {
-        case "Call of Duty: Modern Warfare II":
-            System.out.println("Your favorite gamemode in Call of Duty: Modern Warfare II is: " + preferences.getFavoriteGamemodeCOD());
-            break;
-        case "Mortal Kombat 1":
-            System.out.println("Your main fighter in Mortal Kombat 1 is: " + preferences.getMKmainfighter());
-            break;
-        case "EA Sports FC 24":
-            System.out.println("Your favorite team in EA Sports FC 24 is: " + preferences.getEAfavoriteteam());
-            break;
-    }
+	    if (favoriteGame.equals("Call of Duty: Modern Warfare II")) {
+	        System.out.println("Your favorite gamemode in Call of Duty: Modern Warfare II is: " + preferences.getFavoriteGamemodeCOD());
+	    } else if (favoriteGame.equals("Mortal Kombat 1")) {
+	        System.out.println("Your main fighter in Mortal Kombat 1 is: " + preferences.getMKmainfighter());
+	    } else if (favoriteGame.equals("EA Sports FC 24")) {
+	        System.out.println("Your favorite team in EA Sports FC 24 is: " + preferences.getEAfavoriteteam());
+	    }
 
-        // Example: Recommend a game based on user's favorite
-        switch (preferences.getFavoriteGame()) {
-            case "Call of Duty: Modern Warfare II":
-                System.out.println("You might also enjoy playing Battlefield V.");
-                break;
-            case "Mortal Kombat 1":
-                System.out.println("If you like fighting games, you should try Tekken 7.");
-                break;
-            case "EA Sports FC 24":
-                System.out.println("For sports simulation, FIFA 22 is a great choice.");
-                break;
-        }
-    }
+	    // Example: Recommend a game based on user's favorite
+	    if (favoriteGame.equals("Call of Duty: Modern Warfare II")) {
+	        System.out.println("You might also enjoy playing Battlefield V.");
+	    } else if (favoriteGame.equals("Mortal Kombat 1")) {
+	        System.out.println("If you like fighting games, you should try Tekken 7.");
+	    } else if (favoriteGame.equals("EA Sports FC 24")) {
+	        System.out.println("For sports simulation, FIFA 22 is a great choice.");
+	    }
+	}
+
 
     public static int calculateTotalHours(String playingTime) {
         int totalHours = 0;
@@ -104,7 +95,7 @@ public class PSXBOX {
     }
 
 
-	public static String getFavoriteGame(Scanner sc) {
+    public static String getFavoriteGame(Scanner sc) {
         System.out.println("3. What is your favorite game?");
         System.out.println("   a) Call of Duty: Modern Warfare II");
         System.out.println("   b) Mortal Kombat 1");
@@ -112,18 +103,18 @@ public class PSXBOX {
 
         String choice = sc.nextLine();
 
-        switch (choice) {
-            case "a":
-                return "Call of Duty: Modern Warfare II";
-            case "b":
-                return "Mortal Kombat 1";
-            case "c":
-                return "EA Sports FC 24";
-            default:
-                System.out.println("Invalid choice. Please select a valid option.");
-                return getFavoriteGame(sc);
+        if (choice.equals("a")) {
+            return "Call of Duty: Modern Warfare II";
+        } else if (choice.equals("b")) {
+            return "Mortal Kombat 1";
+        } else if (choice.equals("c")) {
+            return "EA Sports FC 24";
+        } else {
+            System.out.println("Invalid choice. Please select a valid option.");
+            return getFavoriteGame(sc);
         }
     }
+
 
     static class PlayerPreferences {
         private String playingTime;
