@@ -1,4 +1,6 @@
+package Akinator;
 import java.util.*;
+import java.io.*;
 
 public class PSXBOX {
 	static Map<String, PlayerPreferences> preferencesMap = new HashMap<>();
