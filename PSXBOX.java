@@ -21,12 +21,18 @@ public class PSXBOX {
         if (favoriteGame.equals("Call of Duty: Modern Warfare II")) {
             System.out.println("What is your favorite gamemode?");
             String favoriteGamemodeCOD = sc.nextLine();
+            System.out.println("Who is your favorite character?");
+            String CODfavoritechar = sc.nextLine();
         } else if (favoriteGame.equals("Mortal Kombat 1")) {
             System.out.println("Who do you main?");
             String MKmainfighter = sc.nextLine();
+            System.out.println("Do you play competively?");
+            Boolean MKiscompetative = sc.nextBoolean();
         } else if (favoriteGame.equals("EA Sports FC 24")) {
             System.out.println("Who is your favorite team?");
             String EAfavoriteteam = sc.nextLine();
+            System.out.println("Who is your favorite player?");
+            String EAfavoriteplayer = sc.nextLine();
         }
 
         
@@ -50,19 +56,23 @@ public class PSXBOX {
 
 	    if (favoriteGame.equals("Call of Duty: Modern Warfare II")) {
 	        System.out.println("Your favorite gamemode in Call of Duty: Modern Warfare II is: " + preferences.getFavoriteGamemodeCOD());
+	        System.out.println("Your favorite character in Call of Duty: Modern Warfare II is: " + preferences.getCODfavoritechar());
 	    } else if (favoriteGame.equals("Mortal Kombat 1")) {
 	        System.out.println("Your main fighter in Mortal Kombat 1 is: " + preferences.getMKmainfighter());
+	        System.out.println("Your main fighter in Mortal Kombat 1 is: " + preferences.getMKiscompetative());
 	    } else if (favoriteGame.equals("EA Sports FC 24")) {
 	        System.out.println("Your favorite team in EA Sports FC 24 is: " + preferences.getEAfavoriteteam());
+	        System.out.println("Your favorite team in EA Sports FC 24 is: " + preferences.getEAfavoriteplayer());
+	        
 	    }
 
 	    // Example: Recommend a game based on user's favorite
 	    if (favoriteGame.equals("Call of Duty: Modern Warfare II")) {
-	        System.out.println("You might also enjoy playing Battlefield V.");
+	        System.out.println("You might also enjoy playing Battlefield 2049.");
 	    } else if (favoriteGame.equals("Mortal Kombat 1")) {
-	        System.out.println("If you like fighting games, you should try Tekken 7.");
+	        System.out.println("If you like fighting games, you should try Tekken 8.");
 	    } else if (favoriteGame.equals("EA Sports FC 24")) {
-	        System.out.println("For sports simulation, FIFA 22 is a great choice.");
+	        System.out.println("For sports simulation, Madden is a great choice.");
 	    }
 	}
 
@@ -123,6 +133,10 @@ public class PSXBOX {
         private String favoriteGamemodeCOD;
         private String MKmainfighter; 
         private String EAfavoriteteam; 
+        private String CODfavoritechar;
+        private String EAfavoriteplayer;
+        
+        private boolean MKiscompetative;
 
         public void setPlayingTime(String playingTime) {
             this.playingTime = playingTime;
@@ -153,7 +167,7 @@ public class PSXBOX {
 		}
 
 		public void setMKmainfighter(String mKmainfighter) {
-			MKmainfighter = mKmainfighter;
+			this.MKmainfighter = mKmainfighter;
 		}
 
 		public String getEAfavoriteteam() {
@@ -161,7 +175,32 @@ public class PSXBOX {
 		}
 
 		public void setEAfavoriteteam(String eAfavoriteteam) {
-			EAfavoriteteam = eAfavoriteteam;
+			this.EAfavoriteteam = eAfavoriteteam;
+		}
+
+		public String getCODfavoritechar() {
+			return CODfavoritechar;
+		}
+
+		public void setCODfavoritechar(String CODfavoritechar) {
+			this.CODfavoritechar = CODfavoritechar;
+		}
+
+		public String getEAfavoriteplayer() {
+			return EAfavoriteplayer;
+		}
+
+		public void setEAfavoriteplayer(String eAfavoriteplayer) {
+			this.EAfavoriteplayer = eAfavoriteplayer;
+		}
+
+		public boolean getMKiscompetative() {
+			return MKiscompetative;
+		}
+
+		public void setMKiscompetative(boolean mKiscompetative) {
+			this.MKiscompetative = mKiscompetative;
 		}
     }
 }
+
