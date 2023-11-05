@@ -382,7 +382,7 @@ public class Demo {
          return totalHours;
      }
      public static String getFavoriteGame(String sc32) {
-     	String sc3 = JOptionPane.showInputDialog(null,"3. What is your favorite game?\n"+"   1) Call of Duty: Modern Warfare II\n"+"   2) Mortal Kombat 1/n"+"   3) EA Sports FC 24/n","PSXBOX",JOptionPane.OK_CANCEL_OPTION);
+     	String sc3 = JOptionPane.showInputDialog(null,"3. What is your favorite game?\n"+"   1) Call of Duty: Modern Warfare II\n"+"   2) Mortal Kombat \n"+"   3) EA Sports FC ","PSXBOX",JOptionPane.OK_CANCEL_OPTION);
 
      	int choice = Integer.parseInt(sc3);
 
