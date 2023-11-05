@@ -14,7 +14,7 @@ public class Demo {
 		String sc = JOptionPane.showInputDialog(null,"Please select the device on which you normally play games\n"+
 				"1: PC or laptop\n"+"2: Play Station or XBOX\n"+"3: Phone"+"Please enter your selection: ","Welcome",JOptionPane.OK_CANCEL_OPTION);
 		int select = Integer.parseInt(sc);
-		while(select <=3) {
+		//while(select <=3) {
 		if(select == 1) {
 			PC pc = new PC();;
 			JOptionPane.showInputDialog(null,"Please enter how many hour do you play game per day?","PC",JOptionPane.OK_CANCEL_OPTION);
@@ -321,8 +321,8 @@ public class Demo {
 			
 				  }
 			
-		}
-	
+		//}
+	System.exit(0);
 		
 	}
 	 public static void generateReport(PlayerPreferences preferences) {
