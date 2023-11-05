@@ -43,7 +43,7 @@ public class Demo {
 				lol.LOL(input1, input2, input3, input4);
 				pc.PC(PlayTime);
 				
-				JOptionPane.showMessageDialog(null,"\n    Here is my sugguetion:","PC",JOptionPane.OK_OPTION,icon);
+				JOptionPane.showMessageDialog(null,"    Here is my sugguetion:","PC",JOptionPane.OK_OPTION,icon);
 				//about time
 				if(PlayTime >= 6) {
 					JOptionPane.showMessageDialog(null,"1.You spend too much time playing games. Please stop this behavior, the game is virtual and not good for you!","PC",JOptionPane.OK_OPTION,icon);
