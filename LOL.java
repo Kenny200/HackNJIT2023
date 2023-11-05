@@ -1,48 +1,48 @@
-package Akinator;
+package akinator;
 
 public class LOL extends PC{
-	private String role;
-	private String hero;
-	private String whoYouPlayWith;
+	private int role;
+	private int hero;
+	private int whoYouPlayWith;
 	private double money;
 	
 	public LOL() {
 		
 	}
 
-	public void LOL(String role, String hero, String whoYouPlayWith, double money) {
-		this.role = role;
-		this.hero = hero;
-		this.whoYouPlayWith = whoYouPlayWith;
+	public void LOL(int input1, int input2, int input3, double money) {
+		this.role = input1;
+		this.hero = input2;
+		this.whoYouPlayWith = input3;
 		this.money = money;
 		System.out.println("Based on your answer to this question:");
-		System.out.println("| Your favorite role is " + role);
-		System.out.println("| Your favorite hero is " + hero);
-		System.out.println("| You like play " + whoYouPlayWith + " mood");
+		System.out.println("| Your favorite role is " + input1);
+		System.out.println("| Your favorite hero is " + input2);
+		System.out.println("| You like play " + input3 + " mood");
 		System.out.println("| So far you have been spend " + money + "$ on this game");
 	}
 
-	public String getRole() {
+	public int getRole() {
 		return role;
 	}
 
-	public void setRole(String role) {
+	public void setRole(int role) {
 		this.role = role;
 	}
 
-	public String getHero() {
+	public int getHero() {
 		return hero;
 	}
 
-	public void setHero(String hero) {
+	public void setHero(int hero) {
 		this.hero = hero;
 	}
 
-	public String getWhoYouPlayWith() {
+	public int getWhoYouPlayWith() {
 		return whoYouPlayWith;
 	}
 
-	public void setWhoYouPlayWith(String whoYouPlayWith) {
+	public void setWhoYouPlayWith(int whoYouPlayWith) {
 		this.whoYouPlayWith = whoYouPlayWith;
 	}
 

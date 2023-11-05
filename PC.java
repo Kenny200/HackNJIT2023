@@ -1,4 +1,4 @@
-package Akinator;
+package akinator;
 //parent class for PC
 public class PC {
 	

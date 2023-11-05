@@ -1,199 +1,400 @@
-package Akinator;
-import java.util.*;
-import java.io.*;
-import psxbox.PSXBOX;
+package akinator;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JOptionPane;
 /*
 Project: Questionnaire：
 What devices mobile users prefer to play games on, and collect and calculate the average playing time,
 as well as selecting which games are popular with the public
  */
 public class Demo {
-
+	static Map<String, PlayerPreferences> preferencesMap = new HashMap<>();
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Wlcome to the game world!!");
-		System.out.println("Please select the device on which you normally play games");
-		System.out.println("1: PC or laptop");
-		System.out.println("2: Play Station or XBOX");
-		System.out.println("3: Phone");
-		System.out.println("Please enter your selection: ");
-		int select = sc.nextInt();
+		JOptionPane.showMessageDialog(null,"Welcome to the game world!!","Welcome",JOptionPane.OK_OPTION);
+		String sc = JOptionPane.showInputDialog(null,"Please select the device on which you normally play games\n"+
+				"1: PC or laptop\n"+"2: Play Station or XBOX\n"+"3: Phone"+"Please enter your selection: ","Welcome",JOptionPane.OK_CANCEL_OPTION);
+		int select = Integer.parseInt(sc);
 		while(select == 1 || select == 2 || select == 3) {
 		if(select == 1) {
 			PC pc = new PC();;
-			System.out.println("Please enter how many hour do you play game per day?");
-			double PlayTime = sc.nextDouble();
+			JOptionPane.showInputDialog(null,"Please enter how many hour do you play game per day?","PC",JOptionPane.OK_CANCEL_OPTION);
+			double PlayTime = Integer.parseInt(sc);
 			
 			
-			System.out.println("Which of the following games have you played before, and if none of them, choose the one you are most familiar with");
+			JOptionPane.showInputDialog(null,"Which of the following games have you played before, and if none of them, choose the one you are most familiar with"
+					+"1: league of legends\n"+"2: CSGO\n"+"3: MineCraft\n","PC",JOptionPane.OK_CANCEL_OPTION);
 
-			System.out.println("1: league of legends");
-			System.out.println("2: CSGO");
-			System.out.println("3: MineCraft");
-			int pcik = sc.nextInt();
+			int pcik = Integer.parseInt(sc);
 			if(pcik == 1) {
 				LOL lol = new LOL();
-				System.out.println("Which ROLES do you normally play?");
-				String input1 = sc.next();
-				System.out.println("Which HERO do you like most?");
-				String input2 = sc.next();
-				System.out.println("Do you play SOLO or DUO?");
-				String input3 = sc.next();
-				System.out.println("Do you spend MONEY on this game? If so, how much do you spend?");
-				double input4 = sc.nextDouble();
+				JOptionPane.showInputDialog(null,"Which ROLES do you normally play?","PC",JOptionPane.OK_CANCEL_OPTION);
+				int input1 = Integer.parseInt(sc);
+				JOptionPane.showInputDialog(null,"Which HERO do you like most?","PC",JOptionPane.OK_CANCEL_OPTION);
+				int input2 = Integer.parseInt(sc);
+				JOptionPane.showInputDialog(null,"Do you play 1)SOLO or 2)DUO?","PC",JOptionPane.OK_CANCEL_OPTION);
+				int input3 = Integer.parseInt(sc);
+				JOptionPane.showInputDialog(null,"Do you spend MONEY on this game? If so, how much do you spend?","PC",JOptionPane.OK_CANCEL_OPTION);
+				double input4 = Integer.parseInt(sc);
 				
-				System.out.println("Wait a second, your report is beening made......");
+				JOptionPane.showMessageDialog(null,"Wait a second, your report is beening made......","PC",JOptionPane.OK_OPTION);
 				lol.LOL(input1, input2, input3, input4);
 				pc.PC(PlayTime);
 				
-				System.out.println("\n    Here is my sugguetion:");
+				JOptionPane.showMessageDialog(null,"\n    Here is my sugguetion:","PC",JOptionPane.OK_OPTION);
 				//about time
 				if(PlayTime >= 6) {
-					System.out.println("1.You spend too much time playing games. Please stop this behavior, the game is virtual and not good for you!");
+					JOptionPane.showMessageDialog(null,"1.You spend too much time playing games. Please stop this behavior, the game is virtual and not good for you!","PC",JOptionPane.OK_OPTION);
 				}else if(PlayTime >= 3 && PlayTime < 6) {
-					System.out.println("1.You shoule not spend " + PlayTime + " hours on this. Please use your time to study");
+					JOptionPane.showMessageDialog(null,"1.You shoule not spend " + PlayTime + " hours on this. Please use your time to study","PC",JOptionPane.OK_OPTION);
 				}else {
-					System.out.println("1.Playing games properly is a relaxation for your mind");
+					JOptionPane.showMessageDialog(null,"1.Playing games properly is a relaxation for your mind","PC",JOptionPane.OK_OPTION);
 				}
 				//about money
 				if(input4 >= 200) {
-					System.out.println("2.You're spending too much money on the game, please spend wisely!");
+					JOptionPane.showMessageDialog(null,"2.You're spending too much money on the game, please spend wisely!","PC",JOptionPane.OK_OPTION);
 				}else if(input4 >= 100 && input4 < 200) {
-					System.out.println("2.It does look like you spent some of your money on the game, hopefully you can think carefully about whether or not you should continue to spend money in the future");
+					JOptionPane.showMessageDialog(null,"2.It does look like you spent some of your money on the game, hopefully you can think carefully about whether or not you should continue to spend money in the future","PC",JOptionPane.OK_OPTION);
 				}else {
-					System.out.println("2.It doesn't look like you're spending too much money on the game, keep up the good behavior!");
+					JOptionPane.showMessageDialog(null,"2.It doesn't look like you're spending too much money on the game, keep up the good behavior!","PC",JOptionPane.OK_OPTION);
 				}
 				//about play with
-				if(input3.equalsIgnoreCase("solo")) {
-					System.out.println("3.You seem to prefer playing the game alone, maybe it would be more fun to try and play the game with other people");
-				}else if(input3.equalsIgnoreCase("duo")) {
-					System.out.println("3.It seems like you enjoy playing games with other people, which is much more conducive to making friends! Keep it up! :D");
+				if(input3==1) {
+					JOptionPane.showMessageDialog(null,"3.You seem to prefer playing the game alone, maybe it would be more fun to try and play the game with other people","PC",JOptionPane.OK_OPTION);
+				}else if(input3==2) {
+					JOptionPane.showMessageDialog(null,"3.It seems like you enjoy playing games with other people, which is much more conducive to making friends! Keep it up! :D","PC",JOptionPane.OK_OPTION);
 				}
 			}else if(pcik == 2) {
 				CSGO csgo = new CSGO();
-				System.out.println("Which mode do you play for CSGO?");
-				System.out.println("Please choose one of them:");
-				System.out.println("Casual mode");
-				System.out.println("Competitive mode");
-				System.out.println("Wingman mode");
-				System.out.println("Deathmatch mode");
-				System.out.println("Arms mode");
-				System.out.println("Demolition mode");
-				System.out.println("Danger Zone");
-				System.out.println("Retakes");
-				String input1 = sc.next();
-				System.out.println("What's your favorite weapon in the game?");
-				String input2 = sc.next();
-				System.out.println("What is your favorite character?");
-				String input3 = sc.next();
-				System.out.println("What is your favorite weapen skin?");
-				String input4 = sc.next();
-				System.out.println("Do you spend MONEY on this game? If so, how much do you spend?");
-				double input5 = sc.nextDouble();
+				JOptionPane.showInputDialog(null,"Which mode do you play for CSGO?\n"+
+						"Please choose one of them:\n"+
+						"1)Casual mode\n"+
+						"2)Competitive mode\n"+
+						"3)Wingman mode\n"+
+						"4)Deathmatch mode\n"+
+						"5)Arms mode\n"+"6)Demolition mode\n"+"7)Danger Zone\n"+"8)Retakes\n","PC",JOptionPane.OK_CANCEL_OPTION);
 				
-				System.out.println("Wait a second, your report is beening made......");
+				int input1 = Integer.parseInt(sc);
+				JOptionPane.showInputDialog(null,"What's your favorite weapon in the game?","PC",JOptionPane.OK_CANCEL_OPTION);
+				int input2 = Integer.parseInt(sc);
+				JOptionPane.showInputDialog(null,"What is your favorite character?","PC",JOptionPane.OK_CANCEL_OPTION);
+				int input3 = Integer.parseInt(sc);
+				JOptionPane.showInputDialog(null,"What is your favorite weapen skin?","PC",JOptionPane.OK_CANCEL_OPTION);
+				int input4 = Integer.parseInt(sc);
+				JOptionPane.showInputDialog(null,"Do you spend MONEY on this game? If so, how much do you spend?","PC",JOptionPane.OK_CANCEL_OPTION);
+				double input5 = Integer.parseInt(sc);
+				
+				JOptionPane.showMessageDialog(null,"Wait a second, your report is beening made......","PC",JOptionPane.OK_OPTION);
 				csgo.CSGO(input1, input2, input3, input4, input5);
 				pc.PC(PlayTime);
 				
-				System.out.println("\n    Here is my sugguetion:");
+				JOptionPane.showMessageDialog(null,"\n    Here is my sugguetion:","PC",JOptionPane.OK_OPTION);
 				//about time
 				if(PlayTime >= 6) {
-					System.out.println("1.You spend too much time playing games. Please stop this behavior, the game is virtual and not good for you!");
+					JOptionPane.showMessageDialog(null,"1.You spend too much time playing games. Please stop this behavior, the game is virtual and not good for you!","PC",JOptionPane.OK_OPTION);
 				}else if(PlayTime >= 3 && PlayTime < 6) {
-					System.out.println("1.You shoule not spend " + PlayTime + " hours on this. Please use your time to study");
+					JOptionPane.showMessageDialog(null,"1.You shoule not spend " + PlayTime + " hours on this. Please use your time to study","PC",JOptionPane.OK_OPTION);
 				}else {
-					System.out.println("1.Playing games properly is a relaxation for your mind");
+					JOptionPane.showMessageDialog(null,"1.Playing games properly is a relaxation for your mind","PC",JOptionPane.OK_OPTION);
 				}
 				//about mode
-				if(input1.equalsIgnoreCase("Casual")){
-					System.out.println("2.Casual Mode caters to players who enjoy more relaxed and casual gameplay. They suggest a mode where they can practice, experiment, and play without the intense competition of Competitive Mode");
-				}else if(input1.equalsIgnoreCase("Competitive")){
-					System.out.println("2.Competitive Mode is ideal for players who want a highly competitive environment with a focus on teamwork, strategy, and skill improvement. They suggest a mode where they can climb the ranks and challenge themselves");
-				}else if(input1.equalsIgnoreCase("Wingman")) {
-					System.out.println("2.Wingman Mode caters to those who prefer smaller teams and quicker matches. They suggest a mode for 2v2 gameplay that emphasizes close cooperation");
-				}else if(input1.equalsIgnoreCase("Deathmatch")) {
-					System.out.println("2.Deathmatch Mode is often suggested for players looking to practice and improve their aiming and shooting skills in a more fast-paced environment");
-				}else if(input1.equalsIgnoreCase("Arms")) {
-					System.out.println("2.Arms Race provides a mode for players looking for an alternative gameplay style with quick weapon progression and a race to the final knife kill");
-				}else if(input1.equalsIgnoreCase("Demolition")) {
-					System.out.println("2.Demolition Mode combines elements of Casual and Competitive modes, appealing to those who want something in between");
-				}else if(input1.equalsIgnoreCase("Danger")) {
-					System.out.println("2.Danger Zone is a departure from traditional \"CS:GO\" gameplay, suggesting that players want to experience a battle royale mode within the game");
-				}else if(input1.equalsIgnoreCase("Retakes")) {
-					System.out.println("2.Retakes is ideal for players looking for custom game modes that allow them to focus on specific in-game scenarios, such as bomb site defense and retakes");
+				if(input1==1){
+					JOptionPane.showMessageDialog(null,"2.Casual Mode caters to players who enjoy more relaxed and casual gameplay. They suggest a mode where they can practice, experiment, and play without the intense competition of Competitive Mode","PC",JOptionPane.OK_OPTION);
+				}else if(input1==2){
+					JOptionPane.showMessageDialog(null,"2.Competitive Mode is ideal for players who want a highly competitive environment with a focus on teamwork, strategy, and skill improvement. They suggest a mode where they can climb the ranks and challenge themselves","PC",JOptionPane.OK_OPTION);
+				}else if(input1==3) {
+					JOptionPane.showMessageDialog(null,"2.Wingman Mode caters to those who prefer smaller teams and quicker matches. They suggest a mode for 2v2 gameplay that emphasizes close cooperation","PC",JOptionPane.OK_OPTION);
+				}else if(input1==4) {
+					JOptionPane.showMessageDialog(null,"2.Deathmatch Mode is often suggested for players looking to practice and improve their aiming and shooting skills in a more fast-paced environment","PC",JOptionPane.OK_OPTION);
+				}else if(input1==5) {
+					JOptionPane.showMessageDialog(null,"2.Arms Race provides a mode for players looking for an alternative gameplay style with quick weapon progression and a race to the final knife kill","PC",JOptionPane.OK_OPTION);
+				}else if(input1==6) {
+					JOptionPane.showMessageDialog(null,"2.Demolition Mode combines elements of Casual and Competitive modes, appealing to those who want something in between","PC",JOptionPane.OK_OPTION);
+				}else if(input1==7) {
+					JOptionPane.showMessageDialog(null,"2.Danger Zone is a departure from traditional \"CS:GO\" gameplay, suggesting that players want to experience a battle royale mode within the game","PC",JOptionPane.OK_OPTION);
+				}else if(input1==8) {
+					JOptionPane.showMessageDialog(null,"2.Retakes is ideal for players looking for custom game modes that allow them to focus on specific in-game scenarios, such as bomb site defense and retakes","PC",JOptionPane.OK_OPTION);
 				}
 				//about money
 				if(input5 >= 200) {
-					System.out.println("3.You're spending too much money on the game, please spend wisely!");
+					JOptionPane.showMessageDialog(null,"3.You're spending too much money on the game, please spend wisely!","PC",JOptionPane.OK_OPTION);
 				}else if(input5 >= 100 && input5 < 200) {
-					System.out.println("3.It does look like you spent some of your money on the game, hopefully you can think carefully about whether or not you should continue to spend money in the future");
+					JOptionPane.showMessageDialog(null,"3.It does look like you spent some of your money on the game, hopefully you can think carefully about whether or not you should continue to spend money in the future","PC",JOptionPane.OK_OPTION);
 				}else {
-					System.out.println("3.It doesn't look like you're spending too much money on the game, keep up the good behavior!");
+					JOptionPane.showMessageDialog(null,"3.It doesn't look like you're spending too much money on the game, keep up the good behavior!","PC",JOptionPane.OK_OPTION);
 				}
 			}else if(pcik == 3) {
 				MineCraft minecraft = new MineCraft();
-				System.out.println("Please enter what is your favorite mode (Survival, Creative, Adventure and Spectator)");
-				String input1 = sc.next();
-				System.out.println("Do you play alone? (Please enter yes or no)");
-				String input2 = sc.next();
-				System.out.println("What is your favorite item?");
-				String input3 = sc.next();
-				System.out.println("Do you spend MONEY on this game? If so, how much do you spend?");
-				double input4 = sc.nextDouble();
+				JOptionPane.showInputDialog(null,"Please enter what is your favorite mode (1)Survival, 2)Creative, 3)Adventure and 4)Spectator)","PC",JOptionPane.OK_CANCEL_OPTION);
+				int input1 = Integer.parseInt(sc);;
+				JOptionPane.showInputDialog(null,"Do you play alone? (Please enter 1)yes or 2)no)","PC",JOptionPane.OK_CANCEL_OPTION);
+				int input2 = Integer.parseInt(sc);;
+				String sc5 = JOptionPane.showInputDialog(null,"What is your favorite item?","PC",JOptionPane.OK_CANCEL_OPTION);
+				int input3 = Integer.parseInt(sc5);
+				JOptionPane.showInputDialog(null,"Do you spend MONEY on this game? If so, how much do you spend?","PC",JOptionPane.OK_CANCEL_OPTION);
+				double input4 = Integer.parseInt(sc);;
 				
-				System.out.println("Wait a second, your report is beening made......");
+				JOptionPane.showMessageDialog(null,"Wait a second, your report is beening made......","PC",JOptionPane.OK_OPTION);
 				minecraft.MineCraft(input1, input2, input3, input4);
 				pc.PC(PlayTime);
 				
-				System.out.println("\n    Here is my sugguetion:");
+				JOptionPane.showMessageDialog(null,"\n    Here is my sugguetion:","PC",JOptionPane.OK_OPTION);
 				//about time
 				if(PlayTime >= 6) {
-					System.out.println("1.You spend too much time playing games. Please stop this behavior, the game is virtual and not good for you!");
+					JOptionPane.showMessageDialog(null,"1.You spend too much time playing games. Please stop this behavior, the game is virtual and not good for you!","PC",JOptionPane.OK_OPTION);
 				}else if(PlayTime >= 3 && PlayTime < 6) {
-					System.out.println("1.You shoule not spend " + PlayTime + " hours on this. Please use your time to study");
+					JOptionPane.showMessageDialog(null,"1.You shoule not spend " + PlayTime + " hours on this. Please use your time to study","PC",JOptionPane.OK_OPTION);
 				}else {
-					System.out.println("1.Playing games properly is a relaxation for your mind");
+					JOptionPane.showMessageDialog(null,"1.Playing games properly is a relaxation for your mind","PC",JOptionPane.OK_OPTION);
 				}
 				//about mode
-				if(input1.equalsIgnoreCase("Survival")){
-					System.out.println("2.Survival Mode is for players who enjoy challenging and immersive gameplay. It allows them to gather resources, face threats, and focus on exploration and survival");
-				}else if(input1.equalsIgnoreCase("Creative")) {
-					System.out.println("2.Creative Mode caters to players who love creativity and building. It enables players to express themselves through construction without limitations");
-				}else if(input1.equalsIgnoreCase("Adventure")) {
-					System.out.println("2.Adventure Mode is designed for players who enjoy custom-made maps, story-driven content, and puzzle challenges created by the Minecraft community.");
-				}else if(input1.equalsIgnoreCase("Spectator")) {
-					System.out.println("2.Spectator Mode is for players who want to observe and appreciate Minecraft worlds or multiplayer events without directly participating. In this case you need to be more active");
+				if(input1==1){
+					JOptionPane.showMessageDialog(null,"2.Survival Mode is for players who enjoy challenging and immersive gameplay. It allows them to gather resources, face threats, and focus on exploration and survival","PC",JOptionPane.OK_OPTION);
+				}else if(input1==2) {
+					JOptionPane.showMessageDialog(null,"2.Creative Mode caters to players who love creativity and building. It enables players to express themselves through construction without limitations","PC",JOptionPane.OK_OPTION);
+				}else if(input1==3) {
+					JOptionPane.showMessageDialog(null,"2.Adventure Mode is designed for players who enjoy custom-made maps, story-driven content, and puzzle challenges created by the Minecraft community.","PC",JOptionPane.OK_OPTION);
+				}else if(input1==4) {
+					JOptionPane.showMessageDialog(null,"2.Spectator Mode is for players who want to observe and appreciate Minecraft worlds or multiplayer events without directly participating. In this case you need to be more active","PC",JOptionPane.OK_OPTION);
 				}
 				//about money
 				if(input4 >= 200) {
-					System.out.println("3.You're spending too much money on the game, please spend wisely!");
+					JOptionPane.showMessageDialog(null,"3.You're spending too much money on the game, please spend wisely!");
 				}else if(input4 >= 100 && input4 < 200) {
-					System.out.println("3.It does look like you spent some of your money on the game, hopefully you can think carefully about whether or not you should continue to spend money in the future");
+					JOptionPane.showMessageDialog(null,"3.It does look like you spent some of your money on the game, hopefully you can think carefully about whether or not you should continue to spend money in the future","PC",JOptionPane.OK_OPTION);
 				}else {
-					System.out.println("3.It doesn't look like you're spending too much money on the game, keep up the good behavior!");
+					JOptionPane.showMessageDialog(null,"3.It doesn't look like you're spending too much money on the game, keep up the good behavior!","PC",JOptionPane.OK_OPTION);
 				}
 				//who you play with
-				if(input2.equalsIgnoreCase("yes")) {
-					System.out.println("4.You seem to prefer playing the game alone, maybe it would be more fun to try and play the game with other people");
-				}else if(input2.equalsIgnoreCase("no")) {
-					System.out.println("4.It seems like you enjoy playing games with other people, which is much more conducive to making friends! Keep it up! :)");
+				if(input2==1) {
+					JOptionPane.showMessageDialog(null,"4.You seem to prefer playing the game alone, maybe it would be more fun to try and play the game with other people","PC",JOptionPane.OK_OPTION);
+				}else if(input2==2) {
+					JOptionPane.showMessageDialog(null,"4.It seems like you enjoy playing games with other people, which is much more conducive to making friends! Keep it up! :)","PC",JOptionPane.OK_OPTION);
 				}
 			}
 		}
 
 		else if(select == 2) {
-			System.out.println("2");
-			System.exit(0);
-		}else if(select ==3) {
-			System.out.println("3");
-			System.exit(0);
-		}else {
-			System.out.println("Your enter the wrong number, please enter again: ");
-			select = sc.nextInt();
-		}
+
+		        // Step 1: Collect basic information
+			String sc2 = JOptionPane.showInputDialog(null,"Please provide some basic information:\n"+"What is your favorite game?","PSXBOX",JOptionPane.OK_CANCEL_OPTION);
+		        String favoriteGame = getFavoriteGame(sc2);
+		        
+		        JOptionPane.showInputDialog(null,"What is your average playing time (e.g., '2 hours', '3-4 hours', 'all day')?","PSXBOX",JOptionPane.OK_CANCEL_OPTION);
+		       
+		        int playingTime = Integer.parseInt(sc2);
+		        
+
+		        if (favoriteGame.equals("Call of Duty: Modern Warfare II")) {
+		        	JOptionPane.showInputDialog(null,"What is your favorite gamemode?","PSXBOX",JOptionPane.OK_CANCEL_OPTION);
+		            int favoriteGamemodeCOD = Integer.parseInt(sc2);
+		             JOptionPane.showInputDialog(null,"Who is your favorite character?","PSXBOX",JOptionPane.OK_CANCEL_OPTION);
+		            int CODfavoritechar = Integer.parseInt(sc2);
+		        } else if (favoriteGame.equals("Mortal Kombat 1")) {
+		        	JOptionPane.showInputDialog(null,"Who do you main?","PSXBOX",JOptionPane.OK_CANCEL_OPTION);
+		            int MKmainfighter = Integer.parseInt(sc2);
+		            JOptionPane.showInputDialog(null,"Do you play competively?","PSXBOX",JOptionPane.OK_CANCEL_OPTION);
+		            int MKiscompetative = Integer.parseInt(sc2);
+		        } else if (favoriteGame.equals("EA Sports FC 24")) {
+		        	JOptionPane.showInputDialog(null,"Who is your favorite team?","PSXBOX",JOptionPane.OK_CANCEL_OPTION);
+		            int EAfavoriteteam = Integer.parseInt(sc2);
+		            JOptionPane.showInputDialog(null,"Who is your favorite player?","PSXBOX",JOptionPane.OK_CANCEL_OPTION);
+		            int EAfavoriteplayer = Integer.parseInt(sc2);
+		        }
+
+		        
+		        PlayerPreferences playerPreferences = new PlayerPreferences();
+		        playerPreferences.setFavoriteGame(favoriteGame);
+		        playerPreferences.setPlayingTime(playingTime);
+
+		        preferencesMap.put(favoriteGame, playerPreferences);
+				// Generate a report based on user's preferences
+		        generateReport(playerPreferences);
+		        
 		}
 		
+		
+		     if(select ==3) {
+		    	 String sc1 = JOptionPane.showInputDialog(null, "Select what game you play in you phone\n "+"1.Roblox\r\n"
+			        		+ "	2.Among Us\r\n"
+			        		+ "	3.Royal Match\r\n"
+			        		+ "	4.Candy Crush Saga\r\n","Phone",JOptionPane.OK_CANCEL_OPTION);
+			        
+				
+				 int game = Integer.parseInt(sc1);
+				  if (game == 1||game == 2) { 
+					  JOptionPane.showInputDialog(null,"\n1.Enter how many hour you play this game for day ","Phone",JOptionPane.OK_CANCEL_OPTION);
+						int hour = Integer.parseInt(sc1);
+						 JOptionPane.showInputDialog(null,"\n2.Do you like play 1)alone or with 2)Other? ","Phone",JOptionPane.OK_CANCEL_OPTION);
+					  int AS = Integer.parseInt(sc1);
+					  JOptionPane.showInputDialog(null,"\n3.Where you play more 1)outside or 2)home? ","Phone",JOptionPane.OK_CANCEL_OPTION);
+						  int answer2 = Integer.parseInt(sc1);
+						  JOptionPane.showInputDialog(null,"\n4.How much you spend in this game? ","Phone",JOptionPane.OK_CANCEL_OPTION);
+							  int answer3 = Integer.parseInt(sc1);
+
+							  
+							  JOptionPane.showMessageDialog(null,"\n    Here is my sugguetion:","Phone",JOptionPane.OK_OPTION);
+							  ///time
+							  if(hour >= 6) {
+								  JOptionPane.showMessageDialog(null,"1.You spend too much time playing games. Please stop this behavior, the game is virtual and not good for you!","Phone",JOptionPane.OK_OPTION);
+								}else if(hour >= 3 && hour < 6) {
+									JOptionPane.showMessageDialog(null,"1.You shoule not spend " + hour + " hours on this. Please use your time to study or something more recreative","Phone",JOptionPane.OK_OPTION);
+								}else {
+									JOptionPane.showMessageDialog(null,"1.Playing games properly is a relaxation for your mind","Phone",JOptionPane.OK_OPTION);
+								}
+							  //with who you play
+							  if (AS == 1) {
+								  JOptionPane.showMessageDialog(null,"2.That is Great too. Just try find some fiends in the game","Phone",JOptionPane.OK_OPTION);
+							  }
+								  if (AS == 2) {
+									  JOptionPane.showMessageDialog(null,"2.That is Great!!, that means you like to socialize with people a lot","Phone",JOptionPane.OK_OPTION);
+								  }
+								  
+							  //where you play
+							  if (answer2 == 1) { 
+								  JOptionPane.showMessageDialog(null,"3.That is good, it means you like to soak up the sun and cool off a bit.","Phone",JOptionPane.OK_OPTION);
+							  }
+							  if (answer2 == 2) { 
+								  JOptionPane.showMessageDialog(null,"3..Try to get some fresh air after playing","Phone",JOptionPane.OK_OPTION);
+							  }
+							//money
+							  if(answer3 == 0) {
+								  JOptionPane.showMessageDialog(null,"4.You are fine, you save a lot of money","Phone",JOptionPane.OK_OPTION);
+							  }
+							  else if(answer3 >= 200) {
+								  JOptionPane.showMessageDialog(null,"4.You're spending too much money on the game, please spend wisely!","Phone",JOptionPane.OK_OPTION);
+									}else if(answer3 >= 100 && answer3 < 200) {
+										JOptionPane.showMessageDialog(null,"4.It does look like you spent some of your money on the game, hopefully you can think carefully about whether or not you should continue to spend money in the future","Phone",JOptionPane.OK_OPTION);
+									}else {
+										JOptionPane.showMessageDialog(null,"4.It doesn't look like you're spending too much money on the game, keep up the good behavior!","Phone",JOptionPane.OK_OPTION);
+									}
+					  }
+
+				  if (game == 3||game == 4) { 
+					  JOptionPane.showInputDialog(null,"\n1.Enter how many hour you play this game for day: ","Phone",JOptionPane.OK_CANCEL_OPTION);
+						int hour = Integer.parseInt(sc1);
+						 JOptionPane.showInputDialog(null,"\n2.Where you play more 1)outside or 2)home? ","Phone",JOptionPane.OK_CANCEL_OPTION);
+						  int answer2 = Integer.parseInt(sc1);
+						  JOptionPane.showInputDialog(null,"\n3.How much you spend in this game? ");
+						  int answer3 = Integer.parseInt(sc1);
+						  JOptionPane.showInputDialog(null,"\n4.Do you like this game because its is a puzzle game, 1)yes or 2)not? ","Phone",JOptionPane.YES_NO_CANCEL_OPTION);
+						  int answer4 = Integer.parseInt(sc1);
+						  
+						  
+						  JOptionPane.showMessageDialog(null,"\n    Here is my sugguetion:","Phone",JOptionPane.OK_OPTION);
+						  ///time
+						  if(hour >= 6) {
+							  JOptionPane.showMessageDialog(null,"1.You spend too much time playing games. Please stop this behavior, the game is virtual and not good for you!","Phone",JOptionPane.OK_OPTION);
+							}else if(hour >= 3 && hour < 6) {
+								JOptionPane.showMessageDialog(null,"1.You shoule not spend " + hour + " hours on this. Please use your time to study or something more recreative","Phone",JOptionPane.OK_OPTION);
+							}else {
+								JOptionPane.showMessageDialog(null,"1.Playing games properly is a relaxation for your mind","Phone",JOptionPane.OK_OPTION);
+							}
+							  
+						  //where you play
+						  if (answer2 == 1) { 
+							  JOptionPane.showMessageDialog(null,"3.That is good, it means you like to soak up the sun and cool off a bit.","Phone",JOptionPane.OK_OPTION);
+						  }
+						  if (answer2 == 2) { 
+							  JOptionPane.showMessageDialog(null,"3..Try to get some fresh air after playing","Phone",JOptionPane.OK_OPTION);
+						  }
+						//money
+						  if(answer3 == 0) {
+							  JOptionPane.showMessageDialog(null,"3.You are fine, you save a lot of money","Phone",JOptionPane.OK_OPTION);
+						  }
+						  else if(answer3 >= 200) {
+							  JOptionPane.showMessageDialog(null,"3.You're spending too much money on the game, please spend wisely!","Phone",JOptionPane.OK_OPTION);
+								}else if(answer3 >= 100 && answer3 < 200) {
+									JOptionPane.showMessageDialog(null,"3.It does look like you spent some of your money on the game, hopefully you can think carefully about whether or not you should continue to spend money in the future","Phone",JOptionPane.OK_OPTION);
+								}else {
+									JOptionPane.showMessageDialog(null,"3.It doesn't look like you're spending too much money on the game, keep up the good behavior!","Phone",JOptionPane.OK_OPTION);
+								}
+						  
+						  if(answer4==1) {
+							  JOptionPane.showMessageDialog(null,"4.Great!, that means you're one of those people who like to think while playing.","Phone",JOptionPane.OK_OPTION);
+						  }
+		                 if(answer4==0) {
+		                	 JOptionPane.showMessageDialog(null,"4.Try not to waste too much time in this game","Phone",JOptionPane.OK_OPTION);
+							  
+						  }
+				  }
+			
+				  }
+			
+		}
+	
+		
 	}
+	 public static void generateReport(PlayerPreferences preferences) {
+         int totalHours = calculateTotalHours(preferences.getPlayingTime());
+
+         if (totalHours >= 10) {
+         	 JOptionPane.showMessageDialog(null,"Consider limiting your game time. Playing for extended periods may not be healthy.","PSXBOX",JOptionPane.OK_OPTION);
+         }
+
+         String favoriteGame = preferences.getFavoriteGame();
+
+         if (favoriteGame.equals("Call of Duty: Modern Warfare II")) {
+         	 JOptionPane.showMessageDialog(null,"Your favorite gamemode in Call of Duty: Modern Warfare II is: " + preferences.getFavoriteGamemodeCOD(),"PSXBOX",JOptionPane.OK_OPTION);
+         	 JOptionPane.showMessageDialog(null,"Your favorite character in Call of Duty: Modern Warfare II is: " + preferences.getCODfavoritechar(),"PSXBOX",JOptionPane.OK_OPTION);
+         } else if (favoriteGame.equals("Mortal Kombat 1")) {
+         	 JOptionPane.showMessageDialog(null,"Your main fighter in Mortal Kombat 1 is: " + preferences.getMKmainfighter(),"PSXBOX",JOptionPane.OK_CANCEL_OPTION);
+         	 JOptionPane.showMessageDialog(null,"Your main fighter in Mortal Kombat 1 is: " + preferences.getMKiscompetative(),"PSXBOX",JOptionPane.OK_CANCEL_OPTION);
+         } else if (favoriteGame.equals("EA Sports FC 24")) {
+         	 JOptionPane.showMessageDialog(null,"Your favorite team in EA Sports FC 24 is: " + preferences.getEAfavoriteteam(),"PSXBOX",JOptionPane.OK_OPTION);
+         	 JOptionPane.showMessageDialog(null,"Your favorite team in EA Sports FC 24 is: " + preferences.getEAfavoriteplayer(),"PSXBOX",JOptionPane.OK_OPTION);
+             
+         }
+
+         // Example: Recommend a game based on user's favorite
+         if (favoriteGame.equals("Call of Duty: Modern Warfare II")) {
+         	 JOptionPane.showMessageDialog(null,"You might also enjoy playing Battlefield 2049.","PSXBOX",JOptionPane.OK_OPTION);
+         } else if (favoriteGame.equals("Mortal Kombat 1")) {
+         	 JOptionPane.showMessageDialog(null,"If you like fighting games, you should try Tekken 8.","PSXBOX",JOptionPane.OK_OPTION);
+         } else if (favoriteGame.equals("EA Sports FC 24")) {
+         	 JOptionPane.showMessageDialog(null,"For sports simulation, Madden is a great choice.","PSXBOX",JOptionPane.OK_OPTION);
+         }
+     }
+     public static int calculateTotalHours(int i) {
+         int totalHours = 0;
+         try {
+             if (i==24) {
+                 totalHours = 24;
+                 JOptionPane.showMessageDialog(null,"You play all day Please Sleep and talk with someone\nConsider limiting your game time\n. Playing for extended periods may not be healthy.","PSXBOX",JOptionPane.OK_OPTION);}
+                 if (totalHours >= 10) {
+                 	 JOptionPane.showMessageDialog(null,"Consider limiting your game time. Playing for extended periods may not be healthy.","PSXBOX",JOptionPane.OK_OPTION);
+                 }// Assuming "all day" means 24 hours
+                 if (totalHours < 10) {
+                	 JOptionPane.showMessageDialog(null,"Consider limiting your game time.","PSXBOX",JOptionPane.OK_OPTION);
+                 }
+         } catch (NumberFormatException e) {
+             // Handle the case where the input is not a valid number
+         	 JOptionPane.showMessageDialog(null,"Invalid input for playing time. Please provide a valid time range.","PSXBOX",JOptionPane.OK_OPTION);
+         }
+
+         return totalHours;
+     }
+     public static String getFavoriteGame(String sc32) {
+     	String sc3 = JOptionPane.showInputDialog(null,"3. What is your favorite game?\n"+"   1) Call of Duty: Modern Warfare II\n"+"   2) Mortal Kombat 1"+"   3) EA Sports FC 24","PSXBOX",JOptionPane.OK_CANCEL_OPTION);
+
+     	int choice = Integer.parseInt(sc3);;
+
+         if (choice==1) {
+             return "Call of Duty: Modern Warfare II";
+         } else if (choice==2) {
+             return "Mortal Kombat 1";
+         } else if (choice==3) {
+             return "EA Sports FC 24";
+         } else {
+        	 JOptionPane.showMessageDialog(null,"Invalid choice. Please select a valid option.","PSXBOX",JOptionPane.OK_OPTION);
+             return getFavoriteGame(sc3);
+         }
+    }
+
+		
+	}
+
+
 	
+
 	
-}
+

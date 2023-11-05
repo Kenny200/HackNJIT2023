@@ -1,11 +1,11 @@
-package Akinator;
+package akinator;
 
 public class CSGO extends PC{
 	
-	private String mode;
-	private String weapon;
-	private String character;
-	private String skin;
+	private int mode;
+	private int weapon;
+	private int character;
+	private int skin;
 	private double money;
 	
 
@@ -14,57 +14,57 @@ public class CSGO extends PC{
 	}
 
 
-	public void CSGO(String mode, String weapon, String character, String skin, double money) {
-		this.mode = mode;
-		this.weapon = weapon;
-		this.character = character;
-		this.skin = skin;
+	public void CSGO(int input1, int input2, int input3, int input4, double money) {
+		this.mode = input1;
+		this.weapon = input2;
+		this.character = input3;
+		this.skin = input4;
 		this.money = money;
 		System.out.println("Based on your answer to this question:");
-		System.out.println("| You play " + mode);
-		System.out.println("| Your favorite weapon is " + weapon);
-		System.out.println("| Your favorite character is " + character);
-		System.out.println("| Your favorite weapon skin is " + skin);
+		System.out.println("| You play " + input1);
+		System.out.println("| Your favorite weapon is " + input2);
+		System.out.println("| Your favorite character is " + input3);
+		System.out.println("| Your favorite weapon skin is " + input4);
 		System.out.println("| So far you have been spend " + money + "$ on this game");
 	}
 
 
-	public String getMode() {
+	public int getMode() {
 		return mode;
 	}
 
 
-	public void setMode(String mode) {
+	public void setMode(int mode) {
 		this.mode = mode;
 	}
 
 
-	public String getWeapon() {
+	public int getWeapon() {
 		return weapon;
 	}
 
 
-	public void setWeapon(String weapon) {
+	public void setWeapon(int weapon) {
 		this.weapon = weapon;
 	}
 
 
-	public String getCharacter() {
+	public int getCharacter() {
 		return character;
 	}
 
 
-	public void setCharacter(String character) {
+	public void setCharacter(int character) {
 		this.character = character;
 	}
 
 
-	public String getSkin() {
+	public int getSkin() {
 		return skin;
 	}
 
 
-	public void setSkin(String skin) {
+	public void setSkin(int skin) {
 		this.skin = skin;
 	}
 
