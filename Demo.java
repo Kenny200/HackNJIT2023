@@ -14,14 +14,14 @@ public class Demo {
 		String sc = JOptionPane.showInputDialog(null,"Please select the device on which you normally play games\n"+
 				"1: PC or laptop\n"+"2: Play Station or XBOX\n"+"3: Phone"+"Please enter your selection: ","Welcome",JOptionPane.OK_CANCEL_OPTION);
 		int select = Integer.parseInt(sc);
-		while(select == 1 || select == 2 || select == 3) {
+		while(select <=3) {
 		if(select == 1) {
 			PC pc = new PC();;
 			JOptionPane.showInputDialog(null,"Please enter how many hour do you play game per day?","PC",JOptionPane.OK_CANCEL_OPTION);
 			double PlayTime = Integer.parseInt(sc);
 			
 			
-			JOptionPane.showInputDialog(null,"Which of the following games have you played before, and if none of them, choose the one you are most familiar with"
+			JOptionPane.showInputDialog(null,"Which of the following games have you played before, and if none of them, choose the one you are most familiar with\n"
 					+"1: league of legends\n"+"2: CSGO\n"+"3: MineCraft\n","PC",JOptionPane.OK_CANCEL_OPTION);
 
 			int pcik = Integer.parseInt(sc);
@@ -176,12 +176,13 @@ public class Demo {
 		else if(select == 2) {
 
 		        // Step 1: Collect basic information
-			String sc2 = JOptionPane.showInputDialog(null,"Please provide some basic information:\n"+"What is your favorite game?","PSXBOX",JOptionPane.OK_CANCEL_OPTION);
+			String sc2 =JOptionPane.showInputDialog(null,"What is your average playing time (e.g., '2 hours', '3-4 hours', '24 house')?","PSXBOX",JOptionPane.OK_CANCEL_OPTION);
+		       
+	        int playingTime = Integer.parseInt(sc2);
+			 JOptionPane.showInputDialog(null,"Please provide some basic information:\n","PSXBOX",JOptionPane.OK_OPTION);
 		        String favoriteGame = getFavoriteGame(sc2);
 		        
-		        JOptionPane.showInputDialog(null,"What is your average playing time (e.g., '2 hours', '3-4 hours', 'all day')?","PSXBOX",JOptionPane.OK_CANCEL_OPTION);
-		       
-		        int playingTime = Integer.parseInt(sc2);
+		        
 		        
 
 		        if (favoriteGame.equals("Call of Duty: Modern Warfare II")) {
@@ -374,9 +375,9 @@ public class Demo {
          return totalHours;
      }
      public static String getFavoriteGame(String sc32) {
-     	String sc3 = JOptionPane.showInputDialog(null,"3. What is your favorite game?\n"+"   1) Call of Duty: Modern Warfare II\n"+"   2) Mortal Kombat 1"+"   3) EA Sports FC 24","PSXBOX",JOptionPane.OK_CANCEL_OPTION);
+     	String sc3 = JOptionPane.showInputDialog(null,"3. What is your favorite game?\n"+"   1) Call of Duty: Modern Warfare II\n"+"   2) Mortal Kombat 1/n"+"   3) EA Sports FC 24/n","PSXBOX",JOptionPane.OK_CANCEL_OPTION);
 
-     	int choice = Integer.parseInt(sc3);;
+     	int choice = Integer.parseInt(sc3);
 
          if (choice==1) {
              return "Call of Duty: Modern Warfare II";
