@@ -181,8 +181,8 @@ public class Demo {
 		        // Step 1: Collect basic information
 			String sc2 =(String) JOptionPane.showInputDialog(null,"What is your average playing time (e.g., '2 hours', '3-4 hours', '24 house')?","PSXBOX",JOptionPane.OK_CANCEL_OPTION,icon, null, null);
 		       
-	        int playingTime = Integer.parseInt(sc2);
-			 JOptionPane.showInputDialog(null,"Please provide some basic information:\n");
+	                int playingTime = Integer.parseInt(sc2);
+			JOptionPane.showInputDialog(null,"Please provide some basic information:\n");
 		        String favoriteGame = getFavoriteGame(sc2);
 		        
 		        
@@ -228,16 +228,14 @@ public class Demo {
 				 int game = Integer.parseInt(sc1);
 				  if (game == 1||game == 2) { 
 					  JOptionPane.showInputDialog(null,"\n1.Enter how many hour you play this game for day ","Phone",JOptionPane.OK_CANCEL_OPTION,icon, null, null);
-						int hour = Integer.parseInt(sc1);
-						 JOptionPane.showInputDialog(null,"\n2.Do you like play 1)alone or with 2)Other? ","Phone",JOptionPane.OK_CANCEL_OPTION,icon, null, null);
+					  int hour = Integer.parseInt(sc1);
+					  JOptionPane.showInputDialog(null,"\n2.Do you like play 1)alone or with 2)Other? ","Phone",JOptionPane.OK_CANCEL_OPTION,icon, null, null);
 					  int AS = Integer.parseInt(sc1);
-					  JOptionPane.showInputDialog(null,"\n3.Where you play more 1)outside or 2)home? ","Phone",JOptionPane.OK_CANCEL_OPTION,icon, null, null);
-						  int answer2 = Integer.parseInt(sc1);
-						  JOptionPane.showInputDialog(null,"\n4.How much you spend in this game? ","Phone",JOptionPane.OK_CANCEL_OPTION,icon, null, null);
-							  int answer3 = Integer.parseInt(sc1);
-
-							  
-							  JOptionPane.showMessageDialog(null,"\n    Here is my sugguetion:","Phone",JOptionPane.OK_OPTION,icon);
+					  JOptionPane.showInputDialog(null,"\n3.Where you play more 1)outside or 2)home? ","Phone",JOptionPane.OK_CANCEL_OPTION,icon, null, null); 
+					  int answer2 = Integer.parseInt(sc1);
+					  JOptionPane.showInputDialog(null,"\n4.How much you spend in this game? ","Phone",JOptionPane.OK_CANCEL_OPTION,icon, null, null)
+					  int answer3 = Integer.parseInt(sc1);
+					  JOptionPane.showMessageDialog(null,"\n    Here is my sugguetion:","Phone",JOptionPane.OK_OPTION,icon);
 							  ///time
 							  if(hour >= 6) {
 								  JOptionPane.showMessageDialog(null,"1.You spend too much time playing games. Please stop this behavior, the game is virtual and not good for you!","Phone",JOptionPane.OK_OPTION,icon);
@@ -276,13 +274,13 @@ public class Demo {
 
 				  if (game == 3||game == 4) { 
 					  JOptionPane.showInputDialog(null,"\n1.Enter how many hour you play this game for day: ","Phone",JOptionPane.OK_CANCEL_OPTION,icon, null, null);
-						int hour = Integer.parseInt(sc1);
-						 JOptionPane.showInputDialog(null,"\n2.Where you play more 1)outside or 2)home? ","Phone",JOptionPane.OK_CANCEL_OPTION,icon, null, null);
-						  int answer2 = Integer.parseInt(sc1);
-						  JOptionPane.showInputDialog(null,"\n3.How much you spend in this game? ");
-						  int answer3 = Integer.parseInt(sc1);
-						  JOptionPane.showInputDialog(null,"\n4.Do you like this game because its is a puzzle game, 1)yes or 2)not? ","Phone",JOptionPane.OK_CANCEL_OPTION,icon, null, null);
-						  int answer4 = Integer.parseInt(sc1);
+					  int hour = Integer.parseInt(sc1);
+					  JOptionPane.showInputDialog(null,"\n2.Where you play more 1)outside or 2)home? ","Phone",JOptionPane.OK_CANCEL_OPTION,icon, null, null);
+					  int answer2 = Integer.parseInt(sc1);
+					  JOptionPane.showInputDialog(null,"\n3.How much you spend in this game? ");
+					  int answer3 = Integer.parseInt(sc1);
+					  JOptionPane.showInputDialog(null,"\n4.Do you like this game because its is a puzzle game, 1)yes or 2)not? ","Phone",JOptionPane.OK_CANCEL_OPTION,icon, null, null);
+					  int answer4 = Integer.parseInt(sc1);
 						  
 						  
 						  JOptionPane.showMessageDialog(null,"\n    Here is my sugguetion:","Phone",JOptionPane.OK_OPTION,icon);
