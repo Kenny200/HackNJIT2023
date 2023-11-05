@@ -60,12 +60,6 @@ public class PSXBOX {
     
 	//method to generate the report based on user input
 	public static void generateReport(PlayerPreferences preferences) {
-	    int totalHours = calculateTotalHours(preferences.getPlayingTime());
-
-	    if (totalHours >= 10) {
-	        System.out.println("Consider limiting your game time. Playing for extended periods may not be healthy.");
-	    }
-
 	    String favoriteGame = preferences.getFavoriteGame();
 
 	    if (favoriteGame.equals("Call of Duty: Modern Warfare II")) {
@@ -94,15 +88,6 @@ public class PSXBOX {
 	    }
 	}
 
-	//method to tell if user needs to limit play time
-	public static int calculateTotalHours(int playingTime) {
-	    int totalHours = 0;
-	    if (totalHours >= 10) {
-	        System.out.println("Consider limiting your game time. Playing for extended periods may not be healthy.");
-	    }
-
-	    return totalHours;
-	}
 
     //method to get user's favorite game
     public static String getFavoriteGame(Scanner sc) {
