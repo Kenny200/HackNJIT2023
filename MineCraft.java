@@ -1,48 +1,71 @@
-package Akinator;
+package akinator;
+
+import javax.swing.JOptionPane;
 
 public class MineCraft extends PC{
-	private String mode;
-	private String whoYouPlayWith;
-	private String item;
+	private int mode;
+	private int whoYouPlayWith;
+	private int item;
 	private double money;
 
 	public MineCraft() {
 		
 	}
 
-	public void MineCraft(String mode, String whoYouPlayWith, String item, double money) {
-		this.mode = mode;
-		this.whoYouPlayWith = whoYouPlayWith;
-		this.item = item;
-		this.money = money;
-		System.out.println("Based on your answer to this question:");
-		System.out.println("| Your favorite mode is " + mode);
-		System.out.println("| Your favorite item is " + item);
-		System.out.println("| So far you have been spend " + money + "$ on this game");
+	public MineCraft(int input1, int input2, int input3, double input4) {
+		this.mode = input1;
+		this.whoYouPlayWith = input2;
+		this.item = input3;
+		this.setMoney(money);
+		 JOptionPane.showMessageDialog(null,"Based on your answer to this question:");
+		 JOptionPane.showMessageDialog(null,"| Your favorite mode is " + input1);
+		 JOptionPane.showMessageDialog(null,"| Your favorite item is " + input3);
+		 JOptionPane.showMessageDialog(null,"| So far you have been spend " + money + "$ on this game");
 	
 	}
 
-	public String getMode() {
+	public int getMode() {
 		return mode;
 	}
 
-	public void setMode(String mode) {
+	public void setMode(int mode) {
 		this.mode = mode;
 	}
 
-	public String getWhoYouPlayWith() {
+	public int getWhoYouPlayWith() {
 		return whoYouPlayWith;
 	}
 
-	public void setWhoYouPlayWith(String whoYouPlayWith) {
+	public void setWhoYouPlayWith(int whoYouPlayWith) {
 		this.whoYouPlayWith = whoYouPlayWith;
 	}
 
-	public String getItem() {
+	public int getItem() {
 		return item;
 	}
 
-	public void setItem(String item) {
+	public void setItem(int item) {
 		this.item = item;
 	}
+
+	public double getMoney() {
+		return money;
+	}
+
+	public void setMoney(double money) {
+		this.money = money;
+	}
+
+	public void MineCraft(int input1, int input2, int input3, double input4) {
+		// TODO Auto-generated method stub
+		this.mode = input1;
+		this.whoYouPlayWith = input2;
+		this.item = input3;
+		this.setMoney(money);
+		 JOptionPane.showMessageDialog(null,"Based on your answer to this question:");
+		 JOptionPane.showMessageDialog(null,"| Your favorite mode is " + input1);
+		 JOptionPane.showMessageDialog(null,"| Your favorite item is " + input3);
+		 JOptionPane.showMessageDialog(null,"| So far you have been spend " + money + "$ on this game");
+	}
+
 }
