@@ -1,11 +1,11 @@
-package Akinator;
+package akinator;
 import java.util.*;
 import java.io.*;
-
 public class PSXBOX {
-	static Map<String, PlayerPreferences> preferencesMap = new HashMap<>();
+
 	public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        PlayerPreferences playerPreferences = new PlayerPreferences();
 
         // Step 1: Collect basic information
         System.out.println("Please provide some basic information:");
@@ -14,37 +14,51 @@ public class PSXBOX {
         String favoriteGame = getFavoriteGame(sc);
         
         System.out.println("What is your average playing time (e.g., '2 hours', '3-4 hours', 'all day')?");
-        String playingTime;
-        playingTime = sc.nextLine();
+        int playingTime = sc.nextInt();
+        sc.nextLine();
         
-
         if (favoriteGame.equals("Call of Duty: Modern Warfare II")) {
             System.out.println("What is your favorite gamemode?");
             String favoriteGamemodeCOD = sc.nextLine();
+			playerPreferences.setFavoriteGamemodeCOD(favoriteGamemodeCOD);
+			
             System.out.println("Who is your favorite character?");
-            String CODfavoritechar = sc.nextLine();
-        } else if (favoriteGame.equals("Mortal Kombat 1")) {
+            String cODfavoritechar = sc.nextLine();
+            playerPreferences.setCODfavoritechar(cODfavoritechar);
+            
+        } 
+       if (favoriteGame.equals("Mortal Kombat 1")) {
             System.out.println("Who do you main?");
-            String MKmainfighter = sc.nextLine();
+            String mKmainfighter = sc.nextLine();
+            playerPreferences.setMKmainfighter(mKmainfighter);
+            
             System.out.println("Do you play competively?");
-            Boolean MKiscompetative = sc.nextBoolean();
-        } else if (favoriteGame.equals("EA Sports FC 24")) {
+            String mKiscompetative = sc.nextLine();
+            playerPreferences.setmKiscompetative(mKiscompetative);
+            
+        } 
+       if (favoriteGame.equals("EA Sports FC 24")) {
             System.out.println("Who is your favorite team?");
-            String EAfavoriteteam = sc.nextLine();
+            String eAfavoriteteam = sc.nextLine();
+            playerPreferences.setEAfavoriteteam(eAfavoriteteam);
+            
             System.out.println("Who is your favorite player?");
-            String EAfavoriteplayer = sc.nextLine();
+            String eAfavoriteplayer = sc.nextLine();
+            playerPreferences.setEAfavoriteplayer(eAfavoriteplayer);
+            
         }
 
         
-        PlayerPreferences playerPreferences = new PlayerPreferences();
+        
         playerPreferences.setFavoriteGame(favoriteGame);
         playerPreferences.setPlayingTime(playingTime);
 
-        preferencesMap.put(favoriteGame, playerPreferences);
+
 		// Generate a report based on user's preferences
         generateReport(playerPreferences);
     }
     
+	//method to generate the report based on user input
 	public static void generateReport(PlayerPreferences preferences) {
 	    int totalHours = calculateTotalHours(preferences.getPlayingTime());
 
@@ -59,12 +73,16 @@ public class PSXBOX {
 	        System.out.println("Your favorite character in Call of Duty: Modern Warfare II is: " + preferences.getCODfavoritechar());
 	    } else if (favoriteGame.equals("Mortal Kombat 1")) {
 	        System.out.println("Your main fighter in Mortal Kombat 1 is: " + preferences.getMKmainfighter());
-	        System.out.println("Your main fighter in Mortal Kombat 1 is: " + preferences.getMKiscompetative());
+	        if (preferences.getMKiscompetative()) {
+	            System.out.println("You play Mortal Kombat 1 competitively.");
+	        } else {
+	            System.out.println("You play Mortal Kombat 1 casually.");
+	        }
 	    } else if (favoriteGame.equals("EA Sports FC 24")) {
 	        System.out.println("Your favorite team in EA Sports FC 24 is: " + preferences.getEAfavoriteteam());
-	        System.out.println("Your favorite team in EA Sports FC 24 is: " + preferences.getEAfavoriteplayer());
-	        
+	        System.out.println("Your favorite player in EA Sports FC 24 is: " + preferences.getEAfavoriteplayer());
 	    }
+
 
 	    // Example: Recommend a game based on user's favorite
 	    if (favoriteGame.equals("Call of Duty: Modern Warfare II")) {
@@ -76,35 +94,17 @@ public class PSXBOX {
 	    }
 	}
 
+	//method to tell if user needs to limit play time
+	public static int calculateTotalHours(int playingTime) {
+	    int totalHours = 0;
+	    if (totalHours >= 10) {
+	        System.out.println("Consider limiting your game time. Playing for extended periods may not be healthy.");
+	    }
 
-    public static int calculateTotalHours(String playingTime) {
-        int totalHours = 0;
-        try {
-            if (playingTime.toLowerCase().contains("all day")) {
-                totalHours = 24; // Assuming "all day" means 24 hours
-            } else {
-                String[] parts = playingTime.split("-");
-                if (parts.length == 2) {
-                    int lowerBound = Integer.parseInt(parts[0]);
-                    int upperBound = Integer.parseInt(parts[1].split(" ")[0]);
-                    totalHours = (lowerBound + upperBound) / 2;
-                } else {
-                    totalHours = Integer.parseInt(playingTime.split(" ")[0].replaceAll("\\D+",""));
-                }
-            }
-        } catch (NumberFormatException e) {
-            // Handle the case where the input is not a valid number
-            System.out.println("Invalid input for playing time. Please provide a valid time range.");
-        }
+	    return totalHours;
+	}
 
-        if (totalHours >= 10) {
-            System.out.println("Consider limiting your game time. Playing for extended periods may not be healthy.");
-        }
-
-        return totalHours;
-    }
-
-
+    //method to get user's favorite game
     public static String getFavoriteGame(Scanner sc) {
         System.out.println("3. What is your favorite game?");
         System.out.println("   a) Call of Duty: Modern Warfare II");
@@ -126,81 +126,4 @@ public class PSXBOX {
     }
 
 
-    static class PlayerPreferences {
-        private String playingTime;
-        private String favoriteGame;
-        
-        private String favoriteGamemodeCOD;
-        private String MKmainfighter; 
-        private String EAfavoriteteam; 
-        private String CODfavoritechar;
-        private String EAfavoriteplayer;
-        
-        private boolean MKiscompetative;
-
-        public void setPlayingTime(String playingTime) {
-            this.playingTime = playingTime;
-        }
-
-        public String getPlayingTime() {
-            return playingTime;
-        }
-
-        public void setFavoriteGame(String favoriteGame) {
-            this.favoriteGame = favoriteGame;
-        }
-
-        public String getFavoriteGame() {
-            return favoriteGame;
-        }
-
-		public String getFavoriteGamemodeCOD() {
-			return favoriteGamemodeCOD;
-		}
-
-		public void setFavoriteGamemodeCOD(String favoriteGamemodeCOD) {
-			this.favoriteGamemodeCOD = favoriteGamemodeCOD;
-		}
-
-		public String getMKmainfighter() {
-			return MKmainfighter;
-		}
-
-		public void setMKmainfighter(String mKmainfighter) {
-			this.MKmainfighter = mKmainfighter;
-		}
-
-		public String getEAfavoriteteam() {
-			return EAfavoriteteam;
-		}
-
-		public void setEAfavoriteteam(String eAfavoriteteam) {
-			this.EAfavoriteteam = eAfavoriteteam;
-		}
-
-		public String getCODfavoritechar() {
-			return CODfavoritechar;
-		}
-
-		public void setCODfavoritechar(String CODfavoritechar) {
-			this.CODfavoritechar = CODfavoritechar;
-		}
-
-		public String getEAfavoriteplayer() {
-			return EAfavoriteplayer;
-		}
-
-		public void setEAfavoriteplayer(String eAfavoriteplayer) {
-			this.EAfavoriteplayer = eAfavoriteplayer;
-		}
-
-		public boolean getMKiscompetative() {
-			return MKiscompetative;
-		}
-
-		public void setMKiscompetative(boolean mKiscompetative) {
-			this.MKiscompetative = mKiscompetative;
-		}
-    }
 }
-
