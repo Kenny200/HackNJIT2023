@@ -18,7 +18,12 @@ public class LOL extends PC{
 		System.out.println("Based on your answer to this question:");
 		System.out.println("| Your favorite role is " + input1);
 		System.out.println("| Your favorite hero is " + input2);
-		System.out.println("| You like play " + input3 + " mood");
+		if(input3 == 1) {
+			System.out.println("| You like play solo mood");
+			
+		}else if(input3 == 2) {
+			System.out.println("| You like play duo mood");
+		}
 		System.out.println("| So far you have been spend " + money + "$ on this game");
 	}
 
