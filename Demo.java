@@ -2,11 +2,7 @@ package akinator;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
-/*
-Project: Questionnaire：
-What devices mobile users prefer to play games on, and collect and calculate the average playing time,
-as well as selecting which games are popular with the public
- */
+
 public class Demo {
 	static Map<String, PlayerPreferences> preferencesMap = new HashMap<>();
 	public static void main(String[] args) {
@@ -176,7 +172,7 @@ public class Demo {
 		else if(select == 2) {
 
 		        // Step 1: Collect basic information
-			String sc2 =JOptionPane.showInputDialog(null,"What is your average playing time (e.g., '2 hours', '3-4 hours', '24 house')?","PSXBOX",JOptionPane.OK_CANCEL_OPTION);
+			String sc2 =JOptionPane.showInputDialog(null,"How many hours do you play game per day?","PSXBOX",JOptionPane.OK_CANCEL_OPTION);
 		       
 	        int playingTime = Integer.parseInt(sc2);
 			 JOptionPane.showInputDialog(null,"Please provide some basic information:\n","PSXBOX",JOptionPane.OK_OPTION);
@@ -271,14 +267,15 @@ public class Demo {
 					  }
 
 				  if (game == 3||game == 4) { 
+					  
 					  JOptionPane.showInputDialog(null,"\n1.Enter how many hour you play this game for day: ","Phone",JOptionPane.OK_CANCEL_OPTION);
-						int hour = Integer.parseInt(sc1);
-						 JOptionPane.showInputDialog(null,"\n2.Where you play more 1)outside or 2)home? ","Phone",JOptionPane.OK_CANCEL_OPTION);
-						  int answer2 = Integer.parseInt(sc1);
-						  JOptionPane.showInputDialog(null,"\n3.How much you spend in this game? ");
-						  int answer3 = Integer.parseInt(sc1);
-						  JOptionPane.showInputDialog(null,"\n4.Do you like this game because its is a puzzle game, 1)yes or 2)not? ","Phone",JOptionPane.YES_NO_CANCEL_OPTION);
-						  int answer4 = Integer.parseInt(sc1);
+					  int hour = Integer.parseInt(sc1);		
+					  JOptionPane.showInputDialog(null,"\n2.Where you play more 1)outside or 2)home? ","Phone",JOptionPane.OK_CANCEL_OPTION);
+					  int answer2 = Integer.parseInt(sc1);
+					  JOptionPane.showInputDialog(null,"\n3.How much you spend in this game? ");
+					  int answer3 = Integer.parseInt(sc1);
+					  JOptionPane.showInputDialog(null,"\n4.Do you like this game because its is a puzzle game, 1)yes or 2)not? ","Phone",JOptionPane.YES_NO_CANCEL_OPTION);
+					  int answer4 = Integer.parseInt(sc1);
 						  
 						  
 						  JOptionPane.showMessageDialog(null,"\n    Here is my sugguetion:","Phone",JOptionPane.OK_OPTION);
@@ -321,7 +318,7 @@ public class Demo {
 			
 				  }
 			
-		//}
+		
 	System.exit(0);
 		
 	}
