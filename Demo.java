@@ -1,21 +1,22 @@
-package akinator;
+package akniator;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
 
 public class Demo {
+	
 	static Map<String, PlayerPreferences> preferencesMap = new HashMap<>();
+	
 	public static void main(String[] args) {
+		
 		JOptionPane.showMessageDialog(null,"Welcome to the game world!!","Welcome",JOptionPane.OK_OPTION);
 		String sc = JOptionPane.showInputDialog(null,"Please select the device on which you normally play games\n"+
-				"1: PC or laptop\n"+"2: Play Station or XBOX\n"+"3: Phone"+"Please enter your selection: ","Welcome",JOptionPane.OK_CANCEL_OPTION);
+				"1: PC or laptop\n"+"2: Play Station or XBOX\n"+"3: Phone\n"+"Please enter your selection: ","Welcome",JOptionPane.OK_CANCEL_OPTION);
 		int select = Integer.parseInt(sc);
-		//while(select <=3) {
 		if(select == 1) {
 			PC pc = new PC();;
 			JOptionPane.showInputDialog(null,"Please enter how many hour do you play game per day?","PC",JOptionPane.OK_CANCEL_OPTION);
 			double PlayTime = Integer.parseInt(sc);
-			
 			
 			JOptionPane.showInputDialog(null,"Which of the following games have you played before, and if none of them, choose the one you are most familiar with\n"
 					+"1: league of legends\n"+"2: CSGO\n"+"3: MineCraft\n","PC",JOptionPane.OK_CANCEL_OPTION);
@@ -176,10 +177,7 @@ public class Demo {
 		       
 	        int playingTime = Integer.parseInt(sc2);
 			 JOptionPane.showInputDialog(null,"Please provide some basic information:\n","PSXBOX",JOptionPane.OK_OPTION);
-		        String favoriteGame = getFavoriteGame(sc2);
-		        
-		        
-		        
+		        String favoriteGame = getFavoriteGame(sc2);      
 
 		        if (favoriteGame.equals("Call of Duty: Modern Warfare II")) {
 		        	JOptionPane.showInputDialog(null,"What is your favorite gamemode?","PSXBOX",JOptionPane.OK_CANCEL_OPTION);
@@ -197,7 +195,6 @@ public class Demo {
 		            JOptionPane.showInputDialog(null,"Who is your favorite player?","PSXBOX",JOptionPane.OK_CANCEL_OPTION);
 		            int EAfavoriteplayer = Integer.parseInt(sc2);
 		        }
-
 		        
 		        PlayerPreferences playerPreferences = new PlayerPreferences();
 		        playerPreferences.setFavoriteGame(favoriteGame);
@@ -209,13 +206,11 @@ public class Demo {
 		        
 		}
 		
-		
 		     if(select ==3) {
 		    	 String sc1 = JOptionPane.showInputDialog(null, "Select what game you play in you phone\n "+"1.Roblox\r\n"
 			        		+ "	2.Among Us\r\n"
 			        		+ "	3.Royal Match\r\n"
-			        		+ "	4.Candy Crush Saga\r\n","Phone",JOptionPane.OK_CANCEL_OPTION);
-			        
+			        		+ "	4.Candy Crush Saga\r\n","Phone",JOptionPane.OK_CANCEL_OPTION);        
 				
 				 int game = Integer.parseInt(sc1);
 				  if (game == 1||game == 2) { 
@@ -227,7 +222,6 @@ public class Demo {
 						  int answer2 = Integer.parseInt(sc1);
 						  JOptionPane.showInputDialog(null,"\n4.How much you spend in this game? ","Phone",JOptionPane.OK_CANCEL_OPTION);
 							  int answer3 = Integer.parseInt(sc1);
-
 							  
 							  JOptionPane.showMessageDialog(null,"\n    Here is my sugguetion:","Phone",JOptionPane.OK_OPTION);
 							  ///time
@@ -312,17 +306,14 @@ public class Demo {
 						  }
 		                 if(answer4==0) {
 		                	 JOptionPane.showMessageDialog(null,"4.Try not to waste too much time in this game","Phone",JOptionPane.OK_OPTION);
-							  
+					
 						  }
 				  }
-			
 				  }
-			
-		
-	System.exit(0);
-		
+		     System.exit(0);	
 	}
 	 public static void generateReport(PlayerPreferences preferences) {
+		 
          int totalHours = calculateTotalHours(preferences.getPlayingTime());
 
          if (totalHours >= 10) {
@@ -386,13 +377,5 @@ public class Demo {
         	 JOptionPane.showMessageDialog(null,"Invalid choice. Please select a valid option.","PSXBOX",JOptionPane.OK_OPTION);
              return getFavoriteGame(sc3);
          }
-    }
-
-		
-	}
-
-
-	
-
-	
-
+    }		
+}
