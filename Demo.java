@@ -43,12 +43,12 @@ public class Demo {
 				lol.LOL(input1, input2, input3, input4);
 				pc.PC(PlayTime);
 				
-				JOptionPane.showMessageDialog(null,"    Here is my sugguetion:","PC",JOptionPane.OK_OPTION,icon);
+				JOptionPane.showMessageDialog(null,"    Here is my suggestion:","PC",JOptionPane.OK_OPTION,icon);
 				//about time
 				if(PlayTime >= 6) {
 					JOptionPane.showMessageDialog(null,"1.You spend too much time playing games. Please stop this behavior, the game is virtual and not good for you!","PC",JOptionPane.OK_OPTION,icon);
 				}else if(PlayTime >= 3 && PlayTime < 6) {
-					JOptionPane.showMessageDialog(null,"1.You shoule not spend " + PlayTime + " hours on this. Please use your time to study","PC",JOptionPane.OK_OPTION,icon);
+					JOptionPane.showMessageDialog(null,"1.You should not spend " + PlayTime + " hours on this. Please use your time to study","PC",JOptionPane.OK_OPTION,icon);
 				}else {
 					JOptionPane.showMessageDialog(null,"1.Playing games properly is a relaxation for your mind","PC",JOptionPane.OK_OPTION,icon);
 				}
@@ -233,20 +233,20 @@ public class Demo {
 					  int AS = Integer.parseInt(sc1);
 					  JOptionPane.showInputDialog(null,"\n3.Where you play more 1)outside or 2)home? ","Phone",JOptionPane.OK_CANCEL_OPTION,icon, null, null); 
 					  int answer2 = Integer.parseInt(sc1);
-					  JOptionPane.showInputDialog(null,"\n4.How much you spend in this game? ","Phone",JOptionPane.OK_CANCEL_OPTION,icon, null, null)
+					  JOptionPane.showInputDialog(null,"\n4.How much you spend in this game? ","Phone",JOptionPane.OK_CANCEL_OPTION,icon, null, null);
 					  int answer3 = Integer.parseInt(sc1);
 					  JOptionPane.showMessageDialog(null,"\n    Here is my sugguetion:","Phone",JOptionPane.OK_OPTION,icon);
 							  ///time
 							  if(hour >= 6) {
 								  JOptionPane.showMessageDialog(null,"1.You spend too much time playing games. Please stop this behavior, the game is virtual and not good for you!","Phone",JOptionPane.OK_OPTION,icon);
 								}else if(hour >= 3 && hour < 6) {
-									JOptionPane.showMessageDialog(null,"1.You shoule not spend " + hour + " hours on this. Please use your time to study or something more recreative","Phone",JOptionPane.OK_OPTION,icon);
+									JOptionPane.showMessageDialog(null,"1.You should not spend " + hour + " hours on this. Please use your time to study or something more recreative","Phone",JOptionPane.OK_OPTION,icon);
 								}else {
 									JOptionPane.showMessageDialog(null,"1.Playing games properly is a relaxation for your mind","Phone",JOptionPane.OK_OPTION,icon);
 								}
 							  //with who you play
 							  if (AS == 1) {
-								  JOptionPane.showMessageDialog(null,"2.That is Great too. Just try find some fiends in the game","Phone",JOptionPane.OK_OPTION,icon);
+								  JOptionPane.showMessageDialog(null,"2.That is Great too. Just try find some friends in the game","Phone",JOptionPane.OK_OPTION,icon);
 							  }
 								  if (AS == 2) {
 									  JOptionPane.showMessageDialog(null,"2.That is Great!!, that means you like to socialize with people a lot","Phone",JOptionPane.OK_OPTION,icon);
